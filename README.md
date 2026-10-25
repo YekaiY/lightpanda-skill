@@ -42,29 +42,43 @@ catalog entry is cheap while deep material is one read away.
 
 ## Install
 
-### npx (recommended)
+### npx from GitHub
 
-No clone, no global install — run it straight from GitHub:
+No clone, no global install:
 
 ```bash
 # install into this project (./.dsh/skills/lightpanda-browser)
-npx github:YekaiY/lightpanda-skill install
+npx --allow-git=all github:YekaiY/lightpanda-skill install
 
 # install for every project on this machine (~/.dsh/skills)
-npx github:YekaiY/lightpanda-skill install --user
+npx --allow-git=all github:YekaiY/lightpanda-skill install --user
 
 # verify: skill files + the lightpanda binary + a real render
-npx github:YekaiY/lightpanda-skill doctor
+npx --allow-git=all github:YekaiY/lightpanda-skill doctor
 ```
 
-Once published to npm, the shorter form works the same:
+> **The `--allow-git=all` flag is required on npm 12 and later.** npm 12
+> disabled `github:` and remote-tarball dependencies by default (`allow-git=none`
+> → `EALLOWGIT: Fetching packages of type "git" have been disabled`). npm 11 and
+> earlier have no such setting and don't need the flag — they pass it through
+> harmlessly. Verified: npm 11.7 → unset, npm 12.0 → `none`. You can also set it
+> once in your config:
+>
+> ```bash
+> npm config set allow-git all
+> ```
+>
+> Arguments go after the package spec, so keep the explicit `install` when
+> adding flags.
+
+### From npm
+
+After publishing (`npm publish`), the short form works on every npm version,
+with no flags, because it is a normal registry package:
 
 ```bash
 npx lightpanda-skill install
 ```
-
-With the `github:` form, arguments are forwarded after the package spec, so keep
-the explicit `install` if you add flags.
 
 ### CLI reference
 

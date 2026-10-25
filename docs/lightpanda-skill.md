@@ -12,7 +12,37 @@
 
 ---
 
-## 1. 安装到哪里
+## 1. 安装
+
+### 从 GitHub 用 npx 安装（推荐）
+
+```bash
+# 装进当前项目：./.dsh/skills/lightpanda-browser
+npx --allow-git=all github:YekaiY/lightpanda-skill install
+
+# 装给本机所有项目：~/.dsh/skills
+npx --allow-git=all github:YekaiY/lightpanda-skill install --user
+
+# 体检：技能文件 + lightpanda 二进制 + 一次真实渲染
+npx --allow-git=all github:YekaiY/lightpanda-skill doctor
+```
+
+> **npm 12 及以上必须加 `--allow-git=all`。** npm 12 默认禁用
+> `github:` 与远程 tarball 依赖（`allow-git=none`，报
+> `EALLOWGIT: Fetching packages of type "git" have been disabled`）。
+> npm 11 及更早没有该配置项，无需此 flag（照常传参也无副作用）。
+> 实测：npm 11.7 → 未定义，npm 12.0 → `none`。
+> 也可以一次性写入配置：`npm config set allow-git all`。
+
+### 已发布到 npm 时
+
+发布后用短形式，所有 npm 版本都无需额外 flag：
+
+```bash
+npx lightpanda-skill install
+```
+
+### 安装到哪里
 
 技能目录（已按 DSH 技能发现规则放置）：
 
