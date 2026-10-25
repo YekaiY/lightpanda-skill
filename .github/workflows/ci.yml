@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    name: smoke test (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # The smoke test checks bundle integrity, frontmatter, internal links,
+      # CLI behaviour, install semantics and the packed tarball. It does not
+      # need the lightpanda binary.
+      - name: Run smoke test
+        run: node test/smoke.mjs
+
+      - name: Verify the tarball is complete
+        run: npm pack --dry-run

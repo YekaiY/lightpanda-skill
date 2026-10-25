@@ -1,0 +1,15 @@
+# install artifacts
+node_modules/
+.npm-cache/
+*.tgz
+package-lock.json
+
+# scratch
+.probe/
+.research/
+.tmpproj/
+.npxproj/
+
+# OS / editor
+.DS_Store
+*.log

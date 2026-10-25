@@ -1,0 +1,45 @@
+{
+  "name": "lightpanda-skill",
+  "version": "1.0.0",
+  "description": "Agent skill that teaches an AI agent to use the Lightpanda headless browser (fetch, PandaScript run, CDP serve, MCP) — installs into .dsh/skills",
+  "keywords": [
+    "lightpanda",
+    "headless-browser",
+    "agent-skill",
+    "dsh",
+    "scraping",
+    "pandascript",
+    "cdp",
+    "ai-agent"
+  ],
+  "homepage": "https://github.com/YekaiY/lightpanda-skill",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YekaiY/lightpanda-skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YekaiY/lightpanda-skill/issues"
+  },
+  "author": "YekaiY",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "lightpanda-skill": "bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    ".dsh/",
+    "docs/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
+  "os": [
+    "linux",
+    "darwin"
+  ]
+}
